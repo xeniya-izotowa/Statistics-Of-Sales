@@ -24,8 +24,7 @@ public class StatsService {
     }
 
     public int averageSale(long[] sales) {
-        StatsService service = new StatsService();
-        int average = (service.sumOfAllSales(sales)) / 12;
+        int average = (sumOfAllSales(sales)) / sales.length;
 
         return average;
     }
@@ -43,10 +42,10 @@ public class StatsService {
     }
 
     public int monthsOfSalesBelowAverage(long[] sales) {
-        StatsService service = new StatsService();
         int monthsOfSalesBelowAverage = 0;
+        int avgSale = averageSale(sales);
         for (long sale : sales) {
-            if (sale < service.averageSale(sales)) {
+            if (sale < avgSale) {
                 monthsOfSalesBelowAverage++;
             }
         }
@@ -54,10 +53,10 @@ public class StatsService {
     }
 
     public int monthsOfSalesAboveAverage(long[] sales) {
-        StatsService service = new StatsService();
         int monthsOfSalesAboveAverage = 0;
+        int avgSale = averageSale(sales);
         for(long sale : sales) {
-            if (sale > service.averageSale(sales)) {
+            if (sale > avgSale) {
                 monthsOfSalesAboveAverage++;
             }
         }
